@@ -18,9 +18,7 @@ import java.util.List;
 
 import app.originality.com.originality.R;
 import app.originality.com.originality.modules.photo.bean.PhotoBeanVO;
-import app.originality.com.originality.util.ToastUtils;
 import app.originality.com.originality.util.animation.Rotate3dAnimation;
-import app.originality.com.originality.widget.zoomimage.ImageViewTouch;
 
 public class ParallaxViewPagerAdapter extends PagerAdapter {
     private Context mContext;

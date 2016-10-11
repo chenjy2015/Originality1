@@ -6,13 +6,17 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.util.ArrayList;
+
 import app.originality.com.originality.R;
 import app.originality.com.originality.config.Contants;
+import app.originality.com.originality.util.view.ImageCycleView;
 import app.originality.com.originality.video.VideoPlayerActivity;
 
 public class MusicListFragment extends BaseFragment implements View.OnClickListener {
 
-    private ImageView mMusicImg;
+    private ImageCycleView mImageCycleView;
+    private ArrayList<String> mImgResources;
 
     @Override
     protected int setView() {
@@ -21,18 +25,21 @@ public class MusicListFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     protected void findViews() {
-        mMusicImg = (ImageView) this.findViewById(R.id.id_music_img);
+        mImageCycleView = (ImageCycleView) this.findViewById(R.id.id_imagecycleview);
     }
 
     @Override
     protected void init() {
-        ImageLoader.getInstance().displayImage(Contants.imageUrls[10], mMusicImg);
+        mImgResources = new ArrayList<String>();
+        for (int i = 0; i < 8; i++) {
+            mImgResources.add(Contants.imageUrls[i]);
+        }
+        mImageCycleView.setImageResources(mImgResources, new OnImageCycleListenner());
     }
 
 
     @Override
     protected void initEvent() {
-        mMusicImg.setOnClickListener(this);
     }
 
 
@@ -68,5 +75,23 @@ public class MusicListFragment extends BaseFragment implements View.OnClickListe
         super.onDestroy();
     }
 
+
+    /**
+     * 轮播图回调
+     */
+    public class OnImageCycleListenner implements ImageCycleView.ImageCycleViewListener {
+
+        //展示图片
+        @Override
+        public void displayImage(String imageURL, ImageView imageView) {
+            ImageLoader.getInstance().displayImage(imageURL, imageView);
+        }
+
+        //图片点击
+        @Override
+        public void onImageClick(int position, View imageView) {
+
+        }
+    }
 
 }

@@ -5,8 +5,8 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/id_music_img"
+    <app.originality.com.originality.util.view.ImageCycleView
+        android:id="@+id/id_imagecycleview"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:scaleType="centerCrop" />
