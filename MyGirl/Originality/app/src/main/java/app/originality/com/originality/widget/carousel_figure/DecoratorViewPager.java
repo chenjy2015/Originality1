@@ -9,8 +9,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
-import app.originality.com.originality.ui.BaseActivity;
-
 
 public class DecoratorViewPager extends ViewPager {
 
@@ -78,7 +76,7 @@ public class DecoratorViewPager extends ViewPager {
 
     private Handler handler;
     public void setInfinateAdapter(Activity act, Handler handler, PagerAdapter adapter){
-        this.mContext = (BaseActivity)act;
+        this.mContext = act;
         this.handler = handler;
         setAdapter(adapter);
     }
