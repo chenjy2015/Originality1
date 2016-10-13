@@ -15,16 +15,7 @@
             <option value="$PROJECT_DIR$/staggeredgridviewlibrary" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/flipviewpager" />
-            <option value="$PROJECT_DIR$/parallax_viewpager_library" />
-            <option value="$PROJECT_DIR$/residemenu" />
-            <option value="$PROJECT_DIR$/staggeredgridviewlibrary" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
