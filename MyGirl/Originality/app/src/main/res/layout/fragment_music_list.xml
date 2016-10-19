@@ -5,8 +5,8 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <app.originality.com.originality.util.view.ImageCycleView
-        android:id="@+id/id_imagecycleview"
+    <ImageView
+        android:id="@+id/id_image"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:scaleType="centerCrop" />

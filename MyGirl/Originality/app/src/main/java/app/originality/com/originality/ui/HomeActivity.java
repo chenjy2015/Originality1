@@ -1,6 +1,7 @@
 package app.originality.com.originality.ui;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import app.originality.com.originality.ui.fragment.PersonalInforFragment;
 import app.originality.com.originality.ui.fragment.PhotoFragment;
 import app.originality.com.originality.util.StringHelper;
 import app.originality.com.originality.util.ToastUtils;
+import app.originality.com.originality.video.VideoPlayerActivity;
 import app.originality.com.residemenu.ResideMenu;
 import app.originality.com.residemenu.ResideMenuItem;
 
@@ -144,6 +146,9 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
             changeFragment(new MusicListFragment());
         } else if (tag == 1) {
             changeFragment(new PhotoFragment());
+        } else if (tag == 2) {
+            Intent intent = new Intent(HomeActivity.this, VideoListActivity.class);
+            startActivity(intent);
         } else if (tag == 5) {
             changeFragment(new AboutFragment());
         }

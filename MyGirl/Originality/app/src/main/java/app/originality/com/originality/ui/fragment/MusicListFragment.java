@@ -6,17 +6,15 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 import app.originality.com.originality.R;
 import app.originality.com.originality.config.Contants;
-import app.originality.com.originality.util.view.ImageCycleView;
-import app.originality.com.originality.video.VideoPlayerActivity;
+import app.originality.com.originality.ui.MusicListActivity;
 
 public class MusicListFragment extends BaseFragment implements View.OnClickListener {
 
-    private ImageCycleView mImageCycleView;
-    private ArrayList<String> mImgResources;
+    private ImageView mImageView;
 
     @Override
     protected int setView() {
@@ -25,21 +23,20 @@ public class MusicListFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     protected void findViews() {
-        mImageCycleView = (ImageCycleView) this.findViewById(R.id.id_imagecycleview);
+        mImageView = (ImageView) this.findViewById(R.id.id_image);
     }
 
     @Override
     protected void init() {
-        mImgResources = new ArrayList<String>();
-        for (int i = 0; i < 8; i++) {
-            mImgResources.add(Contants.imageUrls[i]);
-        }
-        mImageCycleView.setImageResources(mImgResources, new OnImageCycleListenner());
+        Random random = new Random();
+        int index = random.nextInt(Contants.imageUrls.length);
+        ImageLoader.getInstance().displayImage(Contants.imageUrls[index], mImageView);
     }
 
 
     @Override
     protected void initEvent() {
+        mImageView.setOnClickListener(this);
     }
 
 
@@ -52,9 +49,7 @@ public class MusicListFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.id_music_img:
-//                Intent intent = new Intent(mAct, MusicListActivity.class);
-//                startActivity(intent);
-                Intent intent = new Intent(mAct, VideoPlayerActivity.class);
+                Intent intent = new Intent(mAct, MusicListActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -73,25 +68,6 @@ public class MusicListFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onDestroy() {
         super.onDestroy();
-    }
-
-
-    /**
-     * 轮播图回调
-     */
-    public class OnImageCycleListenner implements ImageCycleView.ImageCycleViewListener {
-
-        //展示图片
-        @Override
-        public void displayImage(String imageURL, ImageView imageView) {
-            ImageLoader.getInstance().displayImage(imageURL, imageView);
-        }
-
-        //图片点击
-        @Override
-        public void onImageClick(int position, View imageView) {
-
-        }
     }
 
 }

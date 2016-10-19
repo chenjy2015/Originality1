@@ -1,7 +1,6 @@
 package app.originality.com.originality.video;
 
 import android.content.pm.ActivityInfo;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -16,13 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 
-import com.blankj.utilcode.utils.FileUtils;
-
 import java.io.File;
 import java.util.List;
 
 import app.originality.com.originality.R;
 import app.originality.com.originality.ui.BaseActivity;
+import app.originality.com.originality.ui.VideoListActivity;
 import app.originality.com.originality.util.AndroidSystemHelper;
 import app.originality.com.originality.util.ToastUtils;
 import app.originality.com.originality.util.interfaces.InterfaceUtils;
@@ -103,33 +101,33 @@ public class VideoPlayerActivity extends BaseActivity implements SurfaceHolder.C
     protected void init() {
         hideActionBar();
         mMediaType = (MediaType) getIntent().getSerializableExtra("MediaType");
-//        mUrl = getIntent().getStringExtra("video_path");
-        //实验代码
-        mUrl = "http://121.12.95.103/youku/677346B0DA53C744A9F3F6DEB/0300200100559C80F930CF2E3C93E3330E8513-4575-E1BC-62CA-09EC258A1260.mp4";
+        mUrl = getIntent().getStringExtra("video_path");
+        mIndex = getIntent().getIntExtra("index", 0);
     }
 
     @Override
     protected void loadData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                File file = Environment.getExternalStorageDirectory();
-                if (file != null) {
-                    searchFile(file);
+        this.mVideFiles = VideoListActivity.mVideFiles;
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                File file = Environment.getExternalStorageDirectory();
+//                if (file != null) {
+//                    searchFile(file);
                     mHandler.sendEmptyMessage(0);
-                }
-            }
-        }).start();
+//                }
+//            }
+//        }).start();
     }
 
-    private static File videoFile = null;
+//    private static File videoFile = null;
 
     /**
      * 递归算法 查找出包含RMVB的视频文件
      *
      * @param file
      */
-    public void searchFile(File file) {
+//    public void searchFile(File file) {
 //        if (file.isDirectory()) {
 //            File[] files = file.listFiles();
 //            if(files != null){
@@ -141,8 +139,8 @@ public class VideoPlayerActivity extends BaseActivity implements SurfaceHolder.C
 //            videoFile = file;
 //            return;
 //        }
-        mVideFiles = FileUtils.listFilesInDirWithFilter(file.getPath(), ".mp4");
-    }
+//        mVideFiles = FileUtils.listFilesInDirWithFilter(file.getPath(), ".mp4");
+//    }
 
     public Handler mHandler = new Handler() {
         @Override
